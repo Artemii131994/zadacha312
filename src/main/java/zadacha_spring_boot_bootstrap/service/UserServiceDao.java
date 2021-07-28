@@ -24,4 +24,6 @@ public interface UserServiceDao {
     public Set<Role> byRole(User user, String[] role);
 
     public void add(User user);
+
+
 }
