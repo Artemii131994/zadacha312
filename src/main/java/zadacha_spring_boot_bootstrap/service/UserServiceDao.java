@@ -25,5 +25,5 @@ public interface UserServiceDao {
 
     public void add(User user);
 
-
+    public User ByUserName(String s);
 }

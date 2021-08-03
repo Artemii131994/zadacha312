@@ -70,4 +70,9 @@ public class UserServiceDaoImpl implements UserServiceDao {
         userDAO.add(user);
     }
 
+    @Override
+    @Transactional
+    public User ByUserName(String s){
+        return userDAO.ByUserName(s);
+    }
 }

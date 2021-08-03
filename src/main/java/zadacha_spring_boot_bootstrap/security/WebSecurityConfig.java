@@ -40,8 +40,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable();
         http.authorizeRequests().antMatchers("/login").anonymous()
-                .antMatchers("/", "/admin").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
-                .antMatchers("/", "/user").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
+                .antMatchers("/").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
+                .antMatchers("/", "/admin").hasAnyAuthority("ROLE_ADMIN")
+                .antMatchers("/", "/user").hasAnyAuthority("ROLE_USER")
                 .anyRequest().authenticated().and().formLogin().successHandler(new SuccessUserHandler());
         http.logout().permitAll().logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
                 .logoutSuccessUrl("/login").and().csrf().disable();

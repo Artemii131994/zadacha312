@@ -3,6 +3,7 @@ package zadacha_spring_boot_bootstrap.controller;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -30,10 +31,8 @@ public class UserController {
     }
 
     @GetMapping("/user")
-    public String showAllUser(Model model, @AuthenticationPrincipal User userUSS) {
-        model.addAttribute("user", userUSS);
-        List<User> user = userServiceDao.getAllUser();
-        model.addAttribute("user_user", user);
+    public String showAllUser(Model model, Principal userUSS) {
+        model.addAttribute("user_user", userServiceDao.ByUserName(userUSS.getName()));
         return "user";
     }
 }
