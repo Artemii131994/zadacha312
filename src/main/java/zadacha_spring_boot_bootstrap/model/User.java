@@ -139,9 +139,6 @@ public class User implements UserDetails {
     }
 
     public Set<Role> getRoles() {
-//        if (roles == null) {
-//            roles = new HashSet();
-//        }
 
         return roles;
     }

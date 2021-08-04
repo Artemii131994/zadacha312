@@ -1,6 +1,7 @@
 package zadacha_spring_boot_bootstrap.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import zadacha_spring_boot_bootstrap.dao.RoleDAO;
@@ -18,13 +19,14 @@ public class UserServiceDaoImpl implements UserServiceDao {
 
     private UserDAO userDAO;
     private RoleDAO roleDAO;
+    private PasswordEncoder passwordEncoder;
 
 
     @Autowired
-    public UserServiceDaoImpl(UserDAO userDAO, RoleDAO roleDAO) {
+    public UserServiceDaoImpl(UserDAO userDAO, RoleDAO roleDAO,PasswordEncoder passwordEncoder) {
         this.userDAO = userDAO;
         this.roleDAO = roleDAO;
-
+        this.passwordEncoder=passwordEncoder;
     }
 
     @Override
@@ -43,6 +45,7 @@ public class UserServiceDaoImpl implements UserServiceDao {
     @Override
     @Transactional
     public void update(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.update(user);
     }
 
@@ -67,6 +70,7 @@ public class UserServiceDaoImpl implements UserServiceDao {
     @Override
     @Transactional
     public void add(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         userDAO.add(user);
     }
 

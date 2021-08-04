@@ -3,19 +3,14 @@ package zadacha_spring_boot_bootstrap.controller;
 import javassist.NotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
-import zadacha_spring_boot_bootstrap.model.Role;
 import zadacha_spring_boot_bootstrap.model.User;
 import zadacha_spring_boot_bootstrap.service.UserServiceDao;
 
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Controller
 @RequestMapping("")

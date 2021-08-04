@@ -42,9 +42,6 @@ public class Role implements GrantedAuthority {
     }
 
     public Set<User> getUsers() {
-//        if (users == null) {
-//            users = new HashSet();
-//        }
         return users;
     }
 
